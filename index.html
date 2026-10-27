@@ -1,0 +1,163 @@
+<<!DOCTYPE html>
+
+<html dir="ltr" lang="it">
+
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light dark">
+<meta name="google" value="notranslate">
+
+<style>
+
+  h1 {
+    border-bottom: 1px solid #c0c0c0;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    white-space: nowrap;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  th {
+    cursor: pointer;
+  }
+
+  td.detailsColumn {
+    padding-inline-start: 2em;
+    text-align: end;
+    white-space: nowrap;
+  }
+
+  a.icon {
+    padding-inline-start: 1.5em;
+    text-decoration: none;
+    user-select: auto;
+  }
+
+  a.icon:hover {
+    text-decoration: underline;
+  }
+
+  a.file {
+    background : url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABnRSTlMAAAAAAABupgeRAAABEElEQVR42nRRx3HDMBC846AHZ7sP54BmWAyrsP588qnwlhqw/k4v5ZwWxM1hzmGRgV1cYqrRarXoH2w2m6qqiqKIR6cPtzc3xMSML2Te7XZZlnW7Pe/91/dX47WRBHuA9oyGmRknzGDjab1ePzw8bLfb6WRalmW4ip9FDVpYSWZgOp12Oh3nXJ7nxoJSGEciteP9y+fH52q1euv38WosqA6T2gGOT44vry7BEQtJkMAMMpa6JagAMcUfWYa4hkkzAc7fFlSjwqCoOUYAF5RjHZPVCFBOtSBGfgUDji3c3jpibeEMQhIMh8NwshqyRsBJgvF4jMs/YlVR5KhgNpuBLzk0OcUiR3CMhcPaOzsZiAAA/AjmaB3WZIkAAAAASUVORK5CYII=") left top no-repeat;
+  }
+
+  a.dir {
+    background : url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABt0lEQVR42oxStZoWQRCs2cXdHTLcHZ6EjAwnQWIkJyQlRt4Cd3d3d1n5d7q7ju1zv/q+mh6taQsk8fn29kPDRo87SDMQcNAUJgIQkBjdAoRKdXjm2mOH0AqS+PlkP8sfp0h93iu/PDji9s2FzSSJVg5ykZqWgfGRr9rAAAQiDFoB1OfyESZEB7iAI0lHwLREQBcQQKqo8p+gNUCguwCNAAUQAcFOb0NNGjT+BbUC2YsHZpWLhC6/m0chqIoM1LKbQIIBwlTQE1xAo9QDGDPYf6rkTpPc92gCUYVJAZjhyZltJ95f3zuvLYRGWWCUNkDL2333McBh4kaLlxg+aTmyL7c2xTjkN4Bt7oE3DBP/3SRz65R/bkmBRPGzcRNHYuzMjaj+fdnaFoJUEdTSXfaHbe7XNnMPyqryPcmfY+zURaAB7SHk9cXSH4fQ5rojgCAVIuqCNWgRhLYLhJB4k3iZfIPtnQiCpjAzeBIRXMA6emAqoEbQSoDdGxFUrxS1AYcpaNbBgyQBGJEOnYOeENKR/iAd1npusI4C75/c3539+nbUjOgZV5CkAU27df40lH+agUdIuA/EAgDmZnwZlhDc0wAAAABJRU5ErkJggg==") left top no-repeat;
+  }
+
+  a.up {
+    background : url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACM0lEQVR42myTA+w1RxRHz+zftmrbdlTbtq04qRGrCmvbDWp9tq3a7tPcub8mj9XZ3eHOGQdJAHw77/LbZuvnWy+c/CIAd+91CMf3bo+bgcBiBAGIZKXb19/zodsAkFT+3px+ssYfyHTQW5tr05dCOf3xN49KaVX9+2zy1dX4XMk+5JflN5MBPL30oVsvnvEyp+18Nt3ZAErQMSFOfelCFvw0HcUloDayljZkX+MmamTAMTe+d+ltZ+1wEaRAX/MAnkJdcujzZyErIiVSzCEvIiq4O83AG7LAkwsfIgAnbncag82jfPPdd9RQyhPkpNJvKJWQBKlYFmQA315n4YPNjwMAZYy0TgAweedLmLzTJSTLIxkWDaVCVfAbbiKjytgmm+EGpMBYW0WwwbZ7lL8anox/UxekaOW544HO0ANAshxuORT/RG5YSrjlwZ3lM955tlQqbtVMlWIhjwzkAVFB8Q9EAAA3AFJ+DR3DO/Pnd3NPi7H117rAzWjpEs8vfIqsGZpaweOfEAAFJKuM0v6kf2iC5pZ9+fmLSZfWBVaKfLLNOXj6lYY0V2lfyVCIsVzmcRV9Y0fx02eTaEwhl2PDrXcjFdYRAohQmS8QEFLCLKGYA0AeEakhCCFDXqxsE0AQACgAQp5w96o0lAXuNASeDKWIvADiHwigfBINpWKtAXJvCEKWgSJNbRvxf4SmrnKDpvZavePu1K/zu/due1X/6Nj90MBd/J2Cic7WjBp/jUdIuA8AUtd65M+PzXIAAAAASUVORK5CYII=") left top no-repeat;
+  }
+
+  html[dir=rtl] a {
+    background-position-x: right;
+  }
+
+  #parentDirLinkBox {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+</style>
+
+<title id="title"></title>
+
+</head>
+
+<body>
+
+
+<h1 id="header">The wall</h1>
+
+<table>
+
+
+<thead>
+	<tr>
+		<td style="text-align: center;">
+			<a href="the wall.webp" data-preview-image-ranking="2">
+			   <img  src="the wall.webp" style="width:40%" title="the wall" >
+			</a>
+		</td> 
+	</tr>
+</thead>
+  
+
+ 
+  <tbody id="tbody">
+  
+   <!--  work   -->
+
+				 <!-- 		http://localhost/the wall.html
+  
+  <tr><td data-value="Bring the boys back home.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/Bring%20the%20boys%20back%20home.mp3">Bring the boys back home.mp3</a></td></tr>
+  
+  <tr><td data-value="Confortably numb.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/Confortably%20numb.mp3">Confortably numb.mp3</a></td></tr>
+  
+  <tr><td data-value="Hey You.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/Hey%20You.mp3">Hey You.mp3</a></td></tr>
+  
+  <tr><td data-value="In the flesh.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/In%20the%20flesh.mp3">In the flesh.mp3</a></td></tr>
+  
+  <tr><td data-value="Is there anybody out there.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/Is%20there%20anybody%20out%20there.mp3">Is there anybody out there.mp3</a></td></tr>
+  
+  <tr><td data-value="Nobody home.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/Nobody%20home.mp3">Nobody home.mp3</a></td></tr>
+  
+  <tr><td data-value="Outside the Wall.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/Outside%20the%20Wall.mp3">Outside the Wall.mp3</a></td></tr>
+  
+  <tr><td data-value="Run like hell.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/Run%20like%20hell.mp3">Run like hell.mp3</a></td></tr>
+  
+  <tr><td data-value="Stop.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/Stop.mp3">Stop.mp3</a></td></tr>
+  
+  <tr><td data-value="The show must go on.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/The%20show%20must%20go%20on.mp3">The show must go on.mp3</a></td></tr>
+  
+  <tr><td data-value="The Trial.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/The%20Trial.mp3">The Trial.mp3</a></td></tr>
+  
+  <tr><td data-value="Vera.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/Vera.mp3">Vera.mp3</a></td></tr>
+  
+  <tr><td data-value="Waiting for the worms.mp3"><a class="icon file" draggable="true" href="/Pink%20Floyd/the wall/Waiting%20for%20the%20worms.mp3">Waiting for the worms.mp3</a></td></tr>
+  
+  
+  
+  
+  
+   -->  
+
+ <!-- 		https://fil55.github.io/the wall/  -->
+  
+   
+  <tr><td data-value="Bring the boys back home.mp3"><a class="icon file" draggable="true" href="Bring%20the%20boys%20back%20home.mp3">Bring the boys back home.mp3</a></td></tr>
+  
+  <tr><td data-value="Confortably numb.mp3"><a class="icon file" draggable="true" href="Confortably%20numb.mp3">Confortably numb.mp3</a></td></tr>
+  
+  <tr><td data-value="Hey You.mp3"><a class="icon file" draggable="true" href="Hey%20You.mp3">Hey You.mp3</a></td></tr>
+  
+  <tr><td data-value="In the flesh.mp3"><a class="icon file" draggable="true" href="In%20the%20flesh.mp3">In the flesh.mp3</a></td></tr>
+  
+  <tr><td data-value="Is there anybody out there.mp3"><a class="icon file" draggable="true" href="Is%20there%20anybody%20out%20there.mp3">Is there anybody out there.mp3</a></td></tr>
+  
+  <tr><td data-value="Nobody home.mp3"><a class="icon file" draggable="true" href="Nobody%20home.mp3">Nobody home.mp3</a></td></tr>
+  
+  <tr><td data-value="Outside the Wall.mp3"><a class="icon file" draggable="true" href="Outside%20the%20Wall.mp3">Outside the Wall.mp3</a></td></tr>
+  
+  <tr><td data-value="Run like hell.mp3"><a class="icon file" draggable="true" href="Run%20like%20hell.mp3">Run like hell.mp3</a></td></tr>
+  
+  <tr><td data-value="Stop.mp3"><a class="icon file" draggable="true" href="Stop.mp3">Stop.mp3</a></td></tr>
+  
+  <tr><td data-value="The show must go on.mp3"><a class="icon file" draggable="true" href="The%20show%20must%20go%20on.mp3">The show must go on.mp3</a></td></tr>
+  
+  <tr><td data-value="The Trial.mp3"><a class="icon file" draggable="true" href="The%20Trial.mp3">The Trial.mp3</a></td></tr>
+  
+  <tr><td data-value="Vera.mp3"><a class="icon file" draggable="true" href="Vera.mp3">Vera.mp3</a></td></tr>
+  
+  <tr><td data-value="Waiting for the worms.mp3"><a class="icon file" draggable="true" href="Waiting%20for%20the%20worms.mp3">Waiting for the worms.mp3</a></td></tr>
+  
+  </tbody>
+
+</table>
+
+</body>
+
+</html>
+
